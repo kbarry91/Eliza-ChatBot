@@ -1,4 +1,3 @@
-
 /*
 *	Author	: Kevin Barry
 *	Date	: October 2017
@@ -6,25 +5,27 @@
 *	A chatbot web application using go based on the Eliza Program
 *
 *
-*/
+ */
 
 package main
 
 import (
-	"net/http"
 	"fmt"
-//	"strings"
-//	"bytes"
+	"net/http"
+	//	"strings"
+	//	"bytes"
 )
-	
-
 
 func chatHandler(w http.ResponseWriter, r *http.Request) {
-	
+	// this is code that runs when a request is made to the /ask resource.
+	userInput := r.URL.Query().Get("user-input")
+	reply := "this is elizas response " + userInput
+	fmt.Fprintf(w, reply)
 
-}//chatHandler
+} //chatHandler
 
 func main() {
+
 	//serve the files from the /static folder
 	dir := http.Dir("./static")
 	fileServer := http.FileServer(dir)
