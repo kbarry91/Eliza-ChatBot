@@ -1,0 +1,115 @@
+<!--
+    Author	: Kevin Barry
+    Date	: October 2017
+    Data Represenation and Querying Project
+    A chatbot web application using go based on ythe Eliza Program
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+
+<body>
+
+    <h2>Eliza ChatBot</h2>
+    <p><strong>Previous :</strong>{{.Previous}}</p>
+
+    <!-- a form with action redirecting to /chat using http:GET method-->
+    <form action="/chat" method="GET">
+        <input type="text" name="chat">
+        <input type="submit" value="Chat">
+    </form>
+    <p><strong>User     :</strong>{{.Input}}</p>
+    <p><strong>Response :</strong>{{.Output}}</p>
+
+    <div class="container">
+        <h2>Eliza Chatbot</h2>
+      </div>
+    <!-- form with the chat window, a textinput for user input and a button to submit the question -->
+    <form class="container" onSubmit="return false;">
+
+        <textarea class="form-group" name="chatBox" id="chatBox" style="width: 700px;" height="800px"  > </textarea>
+        <input class="form-control" type="text" id="chat" name="chat" placeholder="Please enter a question...">
+        <button class="btn btn-primary" id="questionButton" type="button" onclick="askQuestion()">Submit Question</button>
+
+    </form>
+    
+
+    <script>
+        // function that gets executed on the button click
+        function askQuestion() {
+            var textarea = document.getElementById("chatBox");
+            var userText = document.getElementById("chat").value;
+            var questionButton = document.getElementById("questionButton");
+
+            // empty the user input text field
+            document.getElementById("chat").value = "";
+
+            // don't send request if user didn't enter text
+            if (userText.length < 1) {
+                return;
+            }
+
+            // create a new AJAX object
+            var xhr = new XMLHttpRequest();
+
+            // send a post request to the path /question
+            xhr.open("POST", "/question");
+
+            // for debugging, otherwise the browser doesn't resend requests
+            xhr.setRequestHeader("Cache-Control", "no-cache");
+
+            // set a custom header value to the value of the text input field
+            xhr.setRequestHeader("user-question", userText);
+
+            // send the request
+            xhr.send();
+
+            // handler for all changes off the request ready state
+            // only do something if response is available 
+            xhr.onreadystatechange = () => {
+
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                   
+                    if (xhr.responseText.length > 0) {
+
+                        // append new text to the textarea and keep new text in view
+                        textarea.value += "\nUser: " + userText + "\nEliza: " + xhr.responseText;
+                        textarea.scrollTop = textarea.scrollHeight;
+
+                        // disable the submit button if the user quit the program
+                      //  questionButton.disabled = xhr.getResponseHeader("quit") === "true";
+
+                    }
+                }
+            }
+        }
+        // if user input text field is in focus allow enter key to trigger the ask question function
+        document.getElementById("chat").addEventListener("keypress", (event) => {
+            if (event.which === 13) {
+                askQuestion();
+            }
+            // console.log(event.which);
+        });
+    </script>
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+
+</html>
