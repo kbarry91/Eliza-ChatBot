@@ -18,88 +18,18 @@
 </head>
 
 <body>
-
-    <h2>Eliza ChatBot</h2>
-    <p><strong>Previous :</strong>{{.Previous}}</p>
-
-    <!-- a form with action redirecting to /chat using http:GET method-->
-    <form action="/chat" method="GET">
-        <input type="text" name="chat">
-        <input type="submit" value="Chat">
-    </form>
-    <p><strong>User     :</strong>{{.Input}}</p>
-    <p><strong>Response :</strong>{{.Output}}</p>
-
     <div class="container">
-        <h2>Eliza Chatbot</h2>
-      </div>
-    <!-- form with the chat window, a textinput for user input and a button to submit the question -->
-    <form class="container" onSubmit="return false;">
-
-        <textarea class="form-group" name="chatBox" id="chatBox" style="width: 700px;" height="800px"  > </textarea>
-        <input class="form-control" type="text" id="chat" name="chat" placeholder="Please enter a question...">
-        <button class="btn btn-primary" id="questionButton" type="button" onclick="askQuestion()">Submit Question</button>
-
+         <h2>Eliza ChatBot</h2>
+    </div>
+    <ul id="conversation_list"></ul>
+    
+    <form>
+        <input class="form-control" id="user-input"></input>
     </form>
+
+    
     
 
-    <script>
-        // function that gets executed on the button click
-        function askQuestion() {
-            var textarea = document.getElementById("chatBox");
-            var userText = document.getElementById("chat").value;
-            var questionButton = document.getElementById("questionButton");
-
-            // empty the user input text field
-            document.getElementById("chat").value = "";
-
-            // don't send request if user didn't enter text
-            if (userText.length < 1) {
-                return;
-            }
-
-            // create a new AJAX object
-            var xhr = new XMLHttpRequest();
-
-            // send a post request to the path /question
-            xhr.open("POST", "/question");
-
-            // for debugging, otherwise the browser doesn't resend requests
-            xhr.setRequestHeader("Cache-Control", "no-cache");
-
-            // set a custom header value to the value of the text input field
-            xhr.setRequestHeader("user-question", userText);
-
-            // send the request
-            xhr.send();
-
-            // handler for all changes off the request ready state
-            // only do something if response is available 
-            xhr.onreadystatechange = () => {
-
-                if (xhr.readyState === 4 && xhr.status === 200) {
-                   
-                    if (xhr.responseText.length > 0) {
-
-                        // append new text to the textarea and keep new text in view
-                        textarea.value += "\nUser: " + userText + "\nEliza: " + xhr.responseText;
-                        textarea.scrollTop = textarea.scrollHeight;
-
-                        // disable the submit button if the user quit the program
-                      //  questionButton.disabled = xhr.getResponseHeader("quit") === "true";
-
-                    }
-                }
-            }
-        }
-        // if user input text field is in focus allow enter key to trigger the ask question function
-        document.getElementById("chat").addEventListener("keypress", (event) => {
-            if (event.which === 13) {
-                askQuestion();
-            }
-            // console.log(event.which);
-        });
-    </script>
 
 
 
