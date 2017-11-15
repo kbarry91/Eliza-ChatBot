@@ -12,6 +12,8 @@ package main
 import (
 	"fmt"
 	"net/http"
+
+	"./eliza"
 	//	"strings"
 	//	"bytes"
 )
@@ -19,7 +21,7 @@ import (
 func chatHandler(w http.ResponseWriter, r *http.Request) {
 	// this is code that runs when a request is made to the /ask resource.
 	userInput := r.URL.Query().Get("user-input")
-	reply := "this is elizas response " + userInput
+	reply := eliza.AskEliza(userInput)
 	fmt.Fprintf(w, reply)
 
 } //chatHandler
