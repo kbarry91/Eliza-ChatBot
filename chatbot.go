@@ -31,6 +31,13 @@ func main() {
 	//serve the files from the /static folder
 	dir := http.Dir("./static")
 	fileServer := http.FileServer(dir)
+	/*code used for test purposes
+	//newLines, _ := eliza.ReadLines("./database/responses.dat")
+	//eliza.PrintResponses("./database/responses.dat")
+	//fmt.Printf("%v", newLines)
+	//tester := eliza.BuildResponses()
+	//fmt.Print(tester)
+	*/
 	//handle requests to /
 	http.Handle("/", fileServer)
 	//handle request to /chat
