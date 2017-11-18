@@ -6,7 +6,6 @@ import (
 	"math/rand"
 	"os"
 	"regexp"
-	"strconv"
 	"strings"
 	"time"
 )
@@ -26,17 +25,23 @@ func Response builder()[]Response{
 }
 // load file
 */
-
-//function to make responses and populate struct
+/*
+*	function to make responses and populate struct
+*	Read file line by line to slice
+*	split each string using ;
+*	make patterns case insensitive
+* 	append values to struct
+**/
+//
 func makeResponses(path string) []Response {
-	fullFile, _ := ReadLines(path)   //read in slice of all lines in the file.
-	responses := make([]Response, 0) // make a slice of Responses to hold the responses, don't know how many there will be so start at size = 0
+	fullFile, _ := ReadLines(path)
+	responses := make([]Response, 0)
 	for i := 0; i < len(fullFile); i += 2 {
-		allPatterns := strings.Split(fullFile[i], ";")    // patterns on first line
-		allResponses := strings.Split(fullFile[i+1], ";") // responses on the next line.
+		allPatterns := strings.Split(fullFile[i], ";")
+		allResponses := strings.Split(fullFile[i+1], ";")
 		for _, pattern := range allPatterns {
-			pattern = "(?i)" + pattern              // make pattern case insensitive.
-			Patterns := regexp.MustCompile(pattern) // throws an error if the pattern doesn't compile.
+			pattern = "(?i)" + pattern
+			Patterns := regexp.MustCompile(pattern)
 			responses = append(responses, Response{Patterns: Patterns, Answers: allResponses})
 		}
 	}
@@ -66,6 +71,74 @@ func ReadLines(path string) ([]string, error) {
 	return lines, scanner.Err()
 }
 
+/*function to map prounouns
+* 	splits string into slice of strings
+*	check if any strings match the map strings
+*	set string to map value
+*	join up into one string again and return
+ */
+func matchPronouns(inputStr string) string {
+	// split inputStr into slice of strings
+	splitStr := strings.Fields(inputStr)
+
+	//map of reflected pronouns
+	pronouns := map[string]string{
+		"i":      "you",
+		"was":    "were",
+		"i'd":    "you would",
+		"i've":   "you have",
+		"i'll":   "you will",
+		"my":     "your",
+		"are":    "am",
+		"you've": "I have",
+		"you'll": "I will",
+		"your":   "my",
+		"yours":  "mine",
+		"you":    "I",
+		"me":     "you",
+		"me.":    "you",
+		"you're": "I’m",
+	}
+
+	//loop map and check for simularites
+	// swap values
+	for index, word := range splitStr {
+		if value, ok := pronouns[strings.ToLower(word)]; ok {
+			splitStr[index] = value
+		}
+	}
+
+	return strings.Join(splitStr, " ")
+}
+
+/*
+* 	function to find input word so it can be returned to user
+*	eg. "my name is .." > "your name is"
+ */
+func wordSwapper(pattern *regexp.Regexp, input string) string {
+	match := pattern.FindStringSubmatch(input)
+	if len(match) == 1 {
+		return "" // no capture is needed
+	}
+	wordSwap := match[1] // 0 is the full string, 1 is first match.
+	//	wordSwap = gen.substituteWords(wordSwap)      // reflect pronouns
+	//	wordSwap = removeUnwantedCharacters(wordSwap) // filter any characters out
+	return wordSwap // the topic ready to be inserted into the response.
+}
+
+/*
+*	function to build the response
+*	if the reponse contains "%"s" formatter
+*	insert the wordSwap into the response
+	else return response as it is
+*/
+func responseBuilder(response, wordSwap string) string {
+	if strings.Contains(response, "%s") {
+		return fmt.Sprintf(response, wordSwap)
+	}
+	return response
+}
+
 /*
 //create []Response from file.
 
@@ -86,46 +159,7 @@ else
 	return "generic answer"
 
 */
-/*
-func getResponses() []Response {
-	raw, err := ioutil.ReadFile("./database/respJson.json")
-	if err != nil {
-		fmt.Println(err.Error())
-		os.Exit(1)
-	}
 
-	var c []Response
-	json.Unmarshal(raw, &c)
-	return c
-}
-func (r Response) toString() string {
-	return toJson(r)
-}
-
-func toJson(r interface{}) string {
-	bytes, err := json.Marshal(r)
-	if err != nil {
-		fmt.Println(err.Error())
-		os.Exit(1)
-	}
-
-	return string(bytes)
-}
-func BuildResponses() int {
-	responses := getResponses()
-	for _, r := range responses {
-		fmt.Println(r.toString())
-	}
-
-	fmt.Println(toJson(responses))
-	//test print struct
-	for _, t := range Response {
-		fmt.print(Response.Pattern)
-		fmt.print(Response.Answers)
-	}
-	return 1
-} //buildResponses
-*/
 func AskEliza(input string) string {
 
 	// send it in
@@ -135,14 +169,22 @@ func AskEliza(input string) string {
 
 	//create response[]response from file
 	response := makeResponses("./database/responses.dat")
-	rand.Seed(time.Now().UTC().UnixNano())
+	rand.Seed(time.Now().Unix())
+
+	/*
+	*	loop through repsonse struct
+	*	if input conatins a pattern
+	* 	Extract the main word
+	*	Generate a random response for that pattern
+	*	build a response and substitute the found word
+	*	return response
+	 */
+
 	for _, response := range response {
 		if response.Patterns.MatchString(input) {
-			//genResp := response.Answers[rand.Intn(len("Answers"))]
-			//genResp := response.Answers[rand.Intn(len("response.Answers"))]
-			fmt.Print("randnum " + strconv.Itoa(rand.Intn(len("response.Answers"))))
-			genResp := response.Answers[0]
-
+			wordSwap := wordSwapper(response.Patterns, input)
+			genResp := response.Answers[rand.Intn(len(response.Answers))]
+			genResp = responseBuilder(genResp, wordSwap)
 			return genResp
 		}
 	}
