@@ -55,6 +55,7 @@ func PrintResponses(path string) {
 }
 
 //function to read all lines from file
+// adapted from https://stackoverflow.com/questions/8757389/reading-file-line-by-line-in-go
 func ReadLines(path string) ([]string, error) {
 	file, err := os.Open(path)
 	if err != nil {
@@ -65,10 +66,18 @@ func ReadLines(path string) ([]string, error) {
 	var lines []string
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
+		readLine := scanner.Text()
+
+		if skipComment(readLine) {
+			continue
+		}
 		lines = append(lines, scanner.Text())
 		//Response.Pattern = scanner.Text()
 	}
 	return lines, scanner.Err()
+}
+func skipComment(readLine string) bool {
+	return strings.HasPrefix(readLine, "//") || len(strings.TrimSpace(readLine)) == 0
 }
 
 /*function to map prounouns

@@ -1,0 +1,12 @@
+[{
+    "pattern": "Is it (.*)",
+    "answers":"Do you think it is %s?;If I told you that it probably isn't %s, how would that make you feel?;If I told you that it probably is %s, how would that make you feel?"
+},
+{
+    "pattern": "happy",
+    "answers":"why are you so happy?;Of course your happy your talking to eliza'"
+}
+
+
+
+]
