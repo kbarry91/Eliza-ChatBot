@@ -1,5 +1,10 @@
 const form = $("#user-input");
 const list = $("#conversation_list");
+var audio = new Audio("/audio/sentAudio.mp3" ) ;
+var audio2 = new Audio("/audio/recAudio.mp3");
+
+
+
 
 form.keypress(function(event){
     if(event.keyCode != 13){ // ENTER
@@ -12,16 +17,20 @@ form.keypress(function(event){
     form.val(" "); // wipes the text box.
     
     // before you send request, make sure the user input is valid i.e. not all empty.
-    list.append("<li class='list-group-item list-group-item-success'>"+"User : " + userText + "</li>");
+    list.append("<img id='avatar-left' src='/img/user-avatar.png' alt='useravatar'><li  class='list-group-item  text-left list-group-item-success' id='leftList'>"+"User : " + userText + "</li>");
 
     // GET/POST
     const queryParams = {"user-input" : userText }
     $.get("/chat", queryParams)
+    
         .done(function(resp){
-            const newItem = "<li class='list-group-item list-group-item-info'>"+"ELiza : " + resp + "</li>";
+            audio2.play();
+            const newItem = "<img id='avatar-right' src='/img/eliza-avatar.png' alt='eliza-avatar'><li  class='list-group-item text-left list-group-item-info' id='rightList'>"+"ELiza : " + resp + "</li>";
             setTimeout(function(){
+              
                 list.append(newItem)
-            }, 1000);//set timeout to give wait to response
+                audio.play();
+            }, 2000);//set timeout to give wait to response
         }).fail(function(){
             const newItem = "<li class='list-group-item list-group-item-danger' >Sorry I'm not home right now.</li>";
             list.append(newItem);

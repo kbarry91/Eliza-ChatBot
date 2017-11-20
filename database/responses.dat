@@ -14,9 +14,15 @@ name is (.*)
 Nice to meet you %s; Tell me something about yourself %s
 how are you 
 Im good  how are you ?;I am great thanks for asking;Less about me tell me something about yourself
+hey
+Oh hey,how are you?;Hi there
+good
+Why do ypu think it is good?;
+sad (.*)
+Why are you sad?
 //
 // General chat
-interesting
+interesting     
 Why do you find it interesting?;What interest you about it?
 i remember(.*)
 Do you often think of %s?;What else does %s remind you of ?;What else does %s remind you of?
@@ -29,7 +35,7 @@ Your welcome;No need to thank me
 sorry(.*)
 Please don't apologise;It did not bother me please continue
 remember (.*)
-
+Of course i remember %s
 //
 // Just for fun !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 you hot(.*)
