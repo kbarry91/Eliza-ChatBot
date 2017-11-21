@@ -130,8 +130,9 @@ func wordSwapper(pattern *regexp.Regexp, input string) string {
 		return "" // no capture is needed
 	}
 	wordSwap := match[1] // 0 is the full string, 1 is first match.
-	//	wordSwap = gen.substituteWords(wordSwap)      // reflect pronouns
-	//	wordSwap = removeUnwantedCharacters(wordSwap) // filter any characters out
+	print("before matchpros:" + wordSwap)
+	wordSwap = matchPronouns(wordSwap) // reflect pronouns
+	print("after matchpros:" + wordSwap)
 	return wordSwap // the topic ready to be inserted into the response.
 }
 
@@ -191,6 +192,7 @@ func AskEliza(input string) string {
 
 	for _, response := range response {
 		if response.Patterns.MatchString(input) {
+			print("in the if befpre wordswapper called")
 			wordSwap := wordSwapper(response.Patterns, input)
 			genResp := response.Answers[rand.Intn(len(response.Answers))]
 			genResp = responseBuilder(genResp, wordSwap)
