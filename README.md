@@ -11,13 +11,16 @@ To find out more about the Eliza program here is a link to which I refered to in
 #### How to run the program
 This program uses the Go programming language .If you do not currently have Go installed click on the following link to download [INSTALL GO](https://golang.org/dl/)
 
-To clone the repository open to your local machine, in command prompt enter ```https://github.com/kbarry91/Eliza-ChatBot.git```
+To clone the repository open to your local machine, in command prompt enter 
+```
+https://github.com/kbarry91/Eliza-ChatBot.git
+```
 There is two ways to run this program
 1. **Build and Run** Navigate to the Eliza-Chatbot folder and enter the following to compile the code 
 ```
 go build chatbot.go
 ```
-This will create a .exe file in yur current directory.To launch the server and run the file 
+This will create a .exe file in your current directory.To launch the server and run the file 
 ```
 chatbot
 ```
@@ -25,3 +28,19 @@ chatbot
 ```
 go run chatbot.go
 ```  
+The webpage will now be served to the local host. To view the homepage ,open you browser and enter to the local address
+```
+127.0.0.1:8080
+```
+Or alternatively yo can enter
+```
+localhost:8080
+```
+### The Developement process
+#### Research
+In order to succesfully complete this project I followed the basic prinicpal of **how do you get an elephant in a room?bit by bit*. The first step of this process was to research and gather information on the task ahead. To do this I used many online resourses. I was also able to find versions of Eliza that other developers had implemented and learned how I could adapt certain algorithims and improve were possible. This gave a good idea of what defined a good or bad chat bot.
+
+#### Design
+I used the principal of abstraction to make developing this program as easy as possible. I started by handwriting pseudo-code to give me a general path of how the code would run. I decided to structure the program in a way that would allow methods to run independently which would make it easier to troubleshoot bugs along the way.
+
+#### Implementing the algorithim into code 
