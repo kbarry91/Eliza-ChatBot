@@ -7,7 +7,7 @@
 body {
     padding: 5%;
     padding-top: 13%;
-    background-image: url(/img/bg.jpg);
+    background-image: url(/img/finalBg.jpg);
     background-size:     cover;   
     background-attachment: fixed;    
 }
@@ -42,4 +42,13 @@ body {
 #rightList{
     margin-left:55%;
     text-align: right;
+}
+
+#figRight{
+    text-align: right; 
+}
+figcaption{
+    color: white;
+    text-shadow: 2px 2px #ff0000;
+    font-size: 1.5em;
 }

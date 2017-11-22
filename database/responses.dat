@@ -20,7 +20,7 @@ Hello there :) What is your name?
 Nice to meet you %s; Tell me something about yourself %s
 how are you(.*)
 Im good  how are you ?;I am great thanks for asking;Less about me tell me something about yourself
-hey (.*)
+hey(.*)
 Oh hey,how are you?;Hi there
 hi
 Howdey Partner ;Hi ,tell me something about yourself

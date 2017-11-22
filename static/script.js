@@ -14,7 +14,7 @@ form.keypress(function(event){
     form.val(" "); // wipes the text box.
     
     // before you send request, make sure the user input is valid i.e. not all empty.
-    list.append("<img id='avatar-left' src='/img/user-avatar.png' alt='useravatar'><li  class='list-group-item  text-left list-group-item-success' id='leftList'>"+"User : " + userText + "</li>");
+    list.append("<figure><img id='avatar-left' src='/img/user-avatar.png' alt='useravatar'><figcaption>User</figcaption></figure><li  class='list-group-item  text-left list-group-item-success' id='leftList'>"+userText + "</li>");
 
     // GET/POST
     const queryParams = {"user-input" : userText }
@@ -22,7 +22,7 @@ form.keypress(function(event){
     
         .done(function(resp){
             audio2.play();//plays sent message audio
-            const newItem = "<img id='avatar-right' src='/img/eliza-avatar.png' alt='eliza-avatar'><li  class='list-group-item text-left list-group-item-info' id='rightList'>"+"ELiza : " + resp + "</li>";
+            const newItem = "<figure><img id='avatar-right' src='/img/eliza-avatar.png' alt='eliza-avatar'><figcaption id ='figRight'>Eliza</figcaption></figure><li  class='list-group-item text-right list-group-item-info' id='rightList'>"+ resp + "</li>";
             setTimeout(function(){
               
                 list.append(newItem)
@@ -32,7 +32,8 @@ form.keypress(function(event){
                 $("html, body").scrollTop($("body").height());
             }, 2000);//set timeout to give wait to response
         }).fail(function(){
-            const newItem = "<li class='list-group-item list-group-item-danger' >Sorry I'm not home right now.</li>";
+           // display error message and red text box if connection fails
+            const newItem = "<figure><img id='avatar-right' src='/img/eliza-avatar.png' alt='eliza-avatar'><figcaption id ='figRight'>Eliza</figcaption></figure><li  class='list-group-item text-right list-group-item-danger' id='rightList'>Sorry im not home right now come back later</li>";
             list.append(newItem);
         });
 });
