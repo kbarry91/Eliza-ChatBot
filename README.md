@@ -13,6 +13,15 @@ This program uses the Go programming language .If you do not currently have Go i
 
 To clone the repository open to your local machine, in command prompt enter ```https://github.com/kbarry91/Eliza-ChatBot.git```
 There is two ways to run this program
-1. **Build **and **Run Navigate to the Eliza-Chatbot folder and enter the following to compile the code ```go build chatbot.go```
-This will create a .exe file in yur current directory.To launch the server and run the file ```chatbot```
-2. **Run to simply run the program in your command prompt enter the following ```go run chatbot.go```  
+1. **Build and Run** Navigate to the Eliza-Chatbot folder and enter the following to compile the code 
+```
+go build chatbot.go
+```
+This will create a .exe file in yur current directory.To launch the server and run the file 
+```
+chatbot
+```
+2. **Run** to simply run the program in your command prompt enter the following 
+```
+go run chatbot.go
+```  
