@@ -197,5 +197,12 @@ func AskEliza(input string) string {
 		}
 	}
 
-	return "And how does that make you feel?"
+	//	struct of random answers to be displayed if no match is found
+	randomAnswers := []string{
+		"I’m not sure what you’re trying to say. Could you explain it to me?",
+		"How does that make you feel?",
+		"Why do you say that?",
+		"Never mind that ,So what do you do ?",
+	}
+	return randomAnswers[rand.Intn(len(randomAnswers))]
 }

@@ -1,25 +1,28 @@
-.listClass{
-    
-  
-  
- 
+.overFlow{
+    overflow: auto;
+    display: flex;
+    flex-direction: column-reverse
 }
+
 body {
     padding: 5%;
     padding-top: 13%;
     background-image: url(/img/bg.jpg);
     background-size:     cover;   
-    background-attachment: fixed;
+    background-attachment: fixed;    
 }
+
 #avatar-left{
     width:40px;
     height:40px;
     position: absolute;
     left:2%;   
 }
+
 .fixed-top{
     color:white;
 }
+
 #avatar-right{
     width:40px;
     height:40px;
@@ -27,12 +30,15 @@ body {
     right: 5px;    
   
 }
+
 .list-group-item{
    width: 35%;
 }
+
 #leftList{
     margin-right: 30%   ;
 }
+
 #rightList{
     margin-left:55%;
     text-align: right;

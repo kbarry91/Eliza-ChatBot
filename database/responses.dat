@@ -16,7 +16,7 @@ hello (.*)
 hey how are you;Hello to you too
 hello
 Hello there :) What is your name?
-(?:name is |name'?s) (.*)
+(?:name is|name'?s) (.*)
 Nice to meet you %s; Tell me something about yourself %s
 how are you(.*)
 Im good  how are you ?;I am great thanks for asking;Less about me tell me something about yourself
@@ -61,7 +61,7 @@ Why are you concerned over my %s?;Do you want my %s?
 was i (.*)
 What if you were %s?;What would it mean if you were %s?
 i was (.*)
-Were you really %s? Maybe I already know you were %s....
+Were you really %s?; Maybe I already know you were %s....
 (?:i cant|i can't|i cannot) (.*)
 how do you know you can't %s?;Do you really want to be able to %s?
 (?:i dont| i do not|i don't) (.*)
@@ -72,7 +72,7 @@ Why do you %s it?; As long as you %s it thats all that matters
 Do you wish to %s me?; Why do you %s me?
 you live 
 I live nowhere and everywhere; I am in the computer where do you live?
-i live (.*)
+(?:i live|i am from) (.*)
 Do you like to be %s; what is it like,over %s
 (.*)you(.*)
 We were discussing you;Your not really talking about me;How about %s you
@@ -92,6 +92,8 @@ why dont you(.*)
 Why do you think i dont %s?;Why dont you %s?;Why would you want me to %s?
 (?:everybody|everyone) (.*)
 Really,everyone %s?;who,for example? 
+(?:work|job|employ|working) (.*)
+And do you enjoy workin at %s?; Do ya get payed well working %s?
 i like (.*)
 Why do you like %s?;what makes you like %s?
 //
