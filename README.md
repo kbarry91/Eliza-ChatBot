@@ -52,8 +52,8 @@ To add a more realisitic messenger feel to the program I added mp3 format audio 
 ### References
 I used many different sites in order to learn about Eliza and learn new algorithims that were needed to develop the chatbot. Any adapted code has been referenced within  the code.
 Here is a list of a few resourcses I visited most frequently.
-+(https://stackoverflow.com/)
-+(https://www.w3schools.com/jquery/)
-+(http://api.jquery.com/jquery.ajax/)
-+(https://www.smallsurething.com/implementing-the-famous-eliza-chatbot-in-python/)
-+(https://data-representation.github.io/)
++ (https://stackoverflow.com/)
++ (https://www.w3schools.com/jquery/)
++ (http://api.jquery.com/jquery.ajax/)
++ (https://www.smallsurething.com/implementing-the-famous-eliza-chatbot-in-python/)
++ (https://data-representation.github.io/)
