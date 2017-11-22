@@ -12,27 +12,17 @@ import (
 
 //create struct of responses
 type Response struct {
-	//Pattern string
-	//pattern of respnonse
 	Patterns *regexp.Regexp
-	//answer for that response
-	Answers []string
+	Answers  []string
 }
 
-/*
-func Response builder()[]Response{
-
-}
-// load file
-*/
 /*
 *	function to make responses and populate struct
 *	Read file line by line to slice
 *	split each string using ;
 *	make patterns case insensitive
 * 	append values to struct
-**/
-//
+ */
 func makeResponses(path string) []Response {
 	fullFile, _ := ReadLines(path)
 	responses := make([]Response, 0)
@@ -48,13 +38,13 @@ func makeResponses(path string) []Response {
 	return responses
 }
 
-//function to test if responses are being populated
+// function to test if responses are being populated
 func PrintResponses(path string) {
 	response := makeResponses(path)
 	fmt.Printf("%+v\n", response)
 }
 
-//function to read all lines from file
+// function to read all lines from file
 // adapted from https://stackoverflow.com/questions/8757389/reading-file-line-by-line-in-go
 func ReadLines(path string) ([]string, error) {
 	file, err := os.Open(path)
@@ -76,6 +66,8 @@ func ReadLines(path string) ([]string, error) {
 	}
 	return lines, scanner.Err()
 }
+
+// if file line begins with
 func skipComment(readLine string) bool {
 	return strings.HasPrefix(readLine, "//") || len(strings.TrimSpace(readLine)) == 0
 }
@@ -116,22 +108,22 @@ func matchPronouns(inputStr string) string {
 			splitStr[index] = value
 		}
 	}
-
 	return strings.Join(splitStr, " ")
 }
 
 /*
 * 	function to find input word so it can be returned to user
 *	eg. "my name is .." > "your name is"
+*   resource used https://golang.org/pkg/regexp/
  */
 func wordSwapper(pattern *regexp.Regexp, input string) string {
 	match := pattern.FindStringSubmatch(input)
 	if len(match) == 1 {
-		return "" // no capture is needed
+		return "" // no wordmatch is required
 	}
-	wordSwap := match[1]               // 0 is the full string, 1 is first match.
+	wordSwap := match[1]               // 1 is first match.
 	wordSwap = matchPronouns(wordSwap) // reflect pronouns
-	return wordSwap                    // the topic ready to be inserted into the response.
+	return wordSwap                    // the word to be ammened to the response
 }
 
 /*
@@ -147,36 +139,12 @@ func responseBuilder(response, wordSwap string) string {
 	return response
 }
 
-/*
-//create []Response from file.
-
-// loop throug file and create a list of Responses
-//file, err = os.Open(path)
-//bufio.NewScanner(file), .Scan() .Text()
-
-/*
-take user input
-
-for resp in every response
-	if resp.pattern matches user input
-		extract from user input
-		pick random answer
-		sub from input into answer
-		return answer
-else
-	return "generic answer"
-
-*/
-
+//AskEliza main function to start response generation
 func AskEliza(input string) string {
-
-	// send it in
-	// process regex
-	// do complicated stuff
-	// return answer
 
 	//create response[]response from file
 	response := makeResponses("./database/responses.dat")
+	randomResponse, _ := ReadLines("./database/randomResponses.dat")
 	rand.Seed(time.Now().Unix())
 
 	/*
@@ -196,13 +164,6 @@ func AskEliza(input string) string {
 			return genResp
 		}
 	}
-
-	//	struct of random answers to be displayed if no match is found
-	randomAnswers := []string{
-		"I’m not sure what you’re trying to say. Could you explain it to me?",
-		"How does that make you feel?",
-		"Why do you say that?",
-		"Never mind that ,So what do you do ?",
-	}
-	return randomAnswers[rand.Intn(len(randomAnswers))]
+	// if no pattern match is found choose a random response
+	return randomResponse[rand.Intn(len(randomResponse))]
 }

@@ -1,5 +1,7 @@
+//attach jQuery to html
 const form = $("#user-input");
 const list = $("#conversation_list");
+// audio objects to support mp3
 var audio = new Audio("/audio/sentAudio.mp3" ) ;
 var audio2 = new Audio("/audio/recAudio.mp3");
 
