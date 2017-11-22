@@ -38,9 +38,13 @@ localhost:8080
 ```
 ### The Developement process
 #### Research
-In order to succesfully complete this project I followed the basic prinicpal of **how do you get an elephant in a room?bit by bit*. The first step of this process was to research and gather information on the task ahead. To do this I used many online resourses. I was also able to find versions of Eliza that other developers had implemented and learned how I could adapt certain algorithims and improve were possible. This gave a good idea of what defined a good or bad chat bot.
+In order to succesfully complete this project I followed the basic prinicpal of *how do you get an elephant in a room?bit by bit*. The first step of this process was to research and gather information on the task ahead. To do this I used many online resources. I was also able to find versions of Eliza that other developers had implemented and learned how I could adapt certain algorithims and improve were possible. This gave a good idea of what defined a good or bad chat bot.
 
 #### Design
 I used the principal of abstraction to make developing this program as easy as possible. I started by handwriting pseudo-code to give me a general path of how the code would run. I decided to structure the program in a way that would allow methods to run independently which would make it easier to troubleshoot bugs along the way.
 
 #### Implementing the algorithim into code 
+The first step of coding the problem was to get the program to serve the HTML file to the localhost. Once I had this working I used ajax and jQuery to pass the user entered values from the HTML page to the server and back to the HTML page. I then built the eliza.go side as a seperate programme which contained all the computations to build a response that was simply called by a main method in chatbot.go. I decided to create an external responses.dat file to hold all the patterns and responses so that this can be easily extended to add more responses without the need to having to edit the .go code.
+
+### Added Features
+To add a more realisitic messenger feel to the program I added mp3 format audio files that play when a message is sent and recieved,turn the volume up to try this. I put a delay in the repsonse to give the illusion that the other person i.e. the chatbot , was typing out a message to reply.  
