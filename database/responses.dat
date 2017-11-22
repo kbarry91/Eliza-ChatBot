@@ -1,30 +1,48 @@
+//  Lines with the (annotion) are comments
+//  the following post helped me
+//  https://stackoverflow.com/questions/47319703/golang-regular-expression-replaceallstring
+//  General 
+(.*)!
+Why are you shouting about %s;Wow does %s really excite you?
 Is it (.*)
 Do you think it is %s?;If I told you that it probably isn't %s, how would that make you feel?;If I told you that it probably is %s, how would that make you feel?
 I am (.*)
-How do you know you are %s?
+How do you know you are %s?;Why do you think you are %s?
 you are (.*)
 Why do you think i am %s?; Maybe you are %s
 //
-// Greetings !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//  Greetings
 hello (.*)
 hey how are you;Hello to you too
 hello
 Hello there :) What is your name?
-name is (.*)
+(?:name is |name'?s) (.*)
 Nice to meet you %s; Tell me something about yourself %s
-how are you 
+how are you(.*)
 Im good  how are you ?;I am great thanks for asking;Less about me tell me something about yourself
-hey
+hey (.*)
 Oh hey,how are you?;Hi there
-good
-Why do ypu think it is good?;
+hi
+Howdey Partner ;Hi ,tell me something about yourself
+good morning
+Oh hey,how are you?;Hi there
+(?:good|brillant|excellent|superb)
+Why do you think it is good?;Yeah i like it too 
 sad (.*)
 Why are you sad?
+if (.*)
+Do you think its likely that %s;What would you do if %s ?;But what are the chances that %s ?
+perhaps (.*)
+You dont seem too certain that %s;You arent sure?
+computer
+Do computers worry you?;Do you like computers?
 //
-// General chat
+//  General chat
+(?:college|school|course|study)
+Oh thats cool ,what are you studying?;What is your favourite subject?
 interesting     
 Why do you find it interesting?;What interest you about it?
-i remember(.*)
+(?:i recall|i remember)(.*)
 Do you often think of %s?;What else does %s remind you of ?;What else does %s remind you of?
 you remember (.*)
 How could I forget %s ?;What about %s should I remember?
@@ -34,17 +52,51 @@ thank you
 Your welcome;No need to thank me
 sorry(.*)
 Please don't apologise;It did not bother me please continue
-remember (.*)
+(?:recall|remember)(.*)
 Of course i remember %s
+are you (.*)
+Why are you interested in whether i am %s;What if I were %s?
+(?:you're|your) (.*)
+Why are you concerned over my %s?;Do you want my %s?
+was i (.*)
+What if you were %s?;What would it mean if you were %s?
+i was (.*)
+Were you really %s? Maybe I already know you were %s....
+(?:i cant|i can't|i cannot) (.*)
+how do you know you can't %s?;Do you really want to be able to %s?
+(?:i dont| i do not|i don't) (.*)
+Dont you really %s;Do you wish to be able to %s
+(?:i(.*)it)
+Why do you %s it?; As long as you %s it thats all that matters
+(?:i(.*)you)
+Do you wish to %s me?; Why do you %s me?
+you live 
+I live nowhere and everywhere; I am in the computer where do you live?
+i live (.*)
+Do you like to be %s; what is it like,over %s
+(.*)you(.*)
+We were discussing you;Your not really talking about me;How about %s you
+(?:i feel|i think|it seems) (.*)
+Why do you think %s?;Why do you feel %s?
+(?:yes|ya|indeed|of course)
+You see quite certain;I understand;You are sure
+no
+Are you just sayin that to be negative?;Why not?;
+no one (.*)
+Are you sure no one %s?;Surely someone %s
+my (.*)
+Your %s?;why do you say your %s?;Is it important that your %s?
+what
+Why do you ask?;Is that really important now?;What would you want to hear?;Have you asked anyone else?
+why dont you(.*)
+Why do you think i dont %s?;Why dont you %s?;Why would you want me to %s?
+(?:everybody|everyone) (.*)
+Really,everyone %s?;who,for example? 
+i like (.*)
+Why do you like %s?;what makes you like %s?
 //
-// Just for fun !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-you hot(.*)
-mans not hot, never hot
-ting go skrat(.*)
-skidi kat kat Boooooom
-(sing[' a]*song) (.*)
-Sing me song mr pianoman
+//  Just for fun
+(?:sing(.*)song)
+Some say the devil is dead, the devil is dead,some say the devil is dead and burried in killarny
 tell me a joke
-Alot of people cry when they cut onions,the trick is not to get emotionally attached
-sing me a song
-MC Smalley yeah dats ma name, Guna go by the flow ,Gonna' play the game, gonna' roll the dice, once or twice
+Alot of people cry when they cut onions,the trick is not to get emotionally attached;College,college is a jokes
