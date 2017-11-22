@@ -11,7 +11,7 @@ To find out more about the Eliza program here is a link to which I refered to in
 #### How to run the program
 This program uses the Go programming language .If you do not currently have Go installed click on the following link to download [INSTALL GO](https://golang.org/dl/)
 
-To clone the repository open to your local machine, in command prompt enter 
+To clone the repository to your local machine, in command prompt enter 
 ```
 https://github.com/kbarry91/Eliza-ChatBot.git
 ```
@@ -32,7 +32,7 @@ The webpage will now be served to the local host. To view the homepage ,open you
 ```
 127.0.0.1:8080
 ```
-Or alternatively yo can enter
+Or alternatively you can enter
 ```
 localhost:8080
 ```
@@ -47,4 +47,13 @@ I used the principal of abstraction to make developing this program as easy as p
 The first step of coding the problem was to get the program to serve the HTML file to the localhost. Once I had this working I used ajax and jQuery to pass the user entered values from the HTML page to the server and back to the HTML page. I then built the eliza.go side as a seperate programme which contained all the computations to build a response that was simply called by a main method in chatbot.go. I decided to create an external responses.dat file to hold all the patterns and responses so that this can be easily extended to add more responses without the need to having to edit the .go code.
 
 ### Added Features
-To add a more realisitic messenger feel to the program I added mp3 format audio files that play when a message is sent and recieved,turn the volume up to try this. I put a delay in the repsonse to give the illusion that the other person i.e. the chatbot , was typing out a message to reply.  
+To add a more realisitic messenger feel to the program I added mp3 format audio files that play when a message is sent and recieved,turn the volume up to try this. I put a delay in the repsonse to give the illusion that the other person i.e. the chatbot , was typing out a message to reply. Just for fun I added a few responses to give life to Eliza such as telling a joke or singing a song. The home page is both modern and colourfull to attract the user with text dialog boxes,avatars and a constant scroll to bottom to ensure your most recent question is always in view
+
+### References
+I used many different sites in order to learn about Eliza and learn new algorithims that were needed to develop the chatbot. Any adapted code has been referenced within  the code.
+Here is a list of a few resourcses I visited most frequently.
++(https://stackoverflow.com/)
++(https://www.w3schools.com/jquery/)
++(http://api.jquery.com/jquery.ajax/)
++(https://www.smallsurething.com/implementing-the-famous-eliza-chatbot-in-python/)
++(https://data-representation.github.io/)
