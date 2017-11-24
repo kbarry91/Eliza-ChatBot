@@ -57,3 +57,5 @@ Here is a list of a few resourcses I visited most frequently.
 + (http://api.jquery.com/jquery.ajax/)
 + (https://www.smallsurething.com/implementing-the-famous-eliza-chatbot-in-python/)
 + (https://data-representation.github.io/)
+
+![Screen capture of Eliza](/static/img/screencapture.jpg?raw=true "Screen Capture of Eliza")
