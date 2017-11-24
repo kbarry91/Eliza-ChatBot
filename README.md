@@ -4,7 +4,7 @@ This repository was created as part of a project for the module [Data Representa
 
 The objective of this project was to create a chatbot web application in Go. The project description can be found [here](https://data-representation.github.io/problems/project.html) 
 
-#### What is an ELiza Chatbot
+#### What is an Eliza Chatbot
 ELIZA is an early natural language processing computer program created from 1964 to 1966 at the MIT Artificial Intelligence Laboratory by Joseph Weizenbaum. In this project the aim was to create a chatbot that resembled a human speaking bot and give the illusion that the machine was learning and engaging in conversation.
 To find out more about the Eliza program here is a link to which I refered to in order to gauge a more indept understanding of what Eliza is all about [Wikipedia ELIZA](https://en.wikipedia.org/wiki/ELIZA)
 
@@ -13,7 +13,7 @@ This program uses the Go programming language .If you do not currently have Go i
 
 To clone the repository to your local machine, in command prompt enter 
 ```
-https://github.com/kbarry91/Eliza-ChatBot.git
+git clonehttps://github.com/kbarry91/Eliza-ChatBot.git
 ```
 There is two ways to run this program
 1. **Build and Run** Navigate to the Eliza-Chatbot folder and enter the following to compile the code 
@@ -57,5 +57,7 @@ Here is a list of a few resourcses I visited most frequently.
 + (http://api.jquery.com/jquery.ajax/)
 + (https://www.smallsurething.com/implementing-the-famous-eliza-chatbot-in-python/)
 + (https://data-representation.github.io/)
+
+### Screen Capture Of Program
 
 ![Screen capture of Eliza](/static/img/screencapture.jpg?raw=true "Screen Capture of Eliza")
