@@ -18,8 +18,12 @@ hello
 Hello there :) What is your name?
 (?:name is|name'?s) (.*)
 Nice to meet you %s; Tell me something about yourself %s
+(?:your name|you're name|ur name)
+My name is Eliza;My name isn't important right now;My name is 01100101 01101100 01101001 01111010 01100001,work that out:)
 how are you(.*)
 Im good  how are you ?;I am great thanks for asking;Less about me tell me something about yourself
+(?:i?m good|im good|i am good|i'm good) (.*)
+Well im glad that your good;Any particular reason why you feel good?
 hey(.*)
 Oh hey,how are you?;Hi there
 hi
@@ -55,7 +59,7 @@ Please don't apologise;It did not bother me please continue
 (?:recall|remember)(.*)
 Of course i remember %s
 are you (.*)
-Why are you interested in whether i am %s;What if I were %s?
+Why are you interested in whether I am %s;What if I were %s?
 (?:you're|your) (.*)
 Why are you concerned over my %s?;Do you want my %s?
 was i (.*)
@@ -79,9 +83,9 @@ We were discussing you;Your not really talking about me;How about %s you
 (?:i feel|i think|it seems) (.*)
 Why do you think %s?;Why do you feel %s?
 (?:yes|ya|indeed|of course)
-You see quite certain;I understand;You are sure
-no
-Are you just sayin that to be negative?;Why not?;
+You seem quite certain;I understand;You are sure
+(?i)^\s*No\s*$
+Are you just sayin that to be negative?;Why not?
 no one (.*)
 Are you sure no one %s?;Surely someone %s
 my (.*)
@@ -101,4 +105,6 @@ Why do you like %s?;what makes you like %s?
 (?:sing(.*)song)
 Some say the devil is dead, the devil is dead,some say the devil is dead and burried in killarny
 tell me a joke
-Alot of people cry when they cut onions,the trick is not to get emotionally attached;College,college is a jokes
+Alot of people cry when they cut onions,the trick is not to get emotionally attached;College,college is a joke
+yurt
+Yurt the pony she said with one leg on the dash
