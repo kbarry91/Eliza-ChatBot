@@ -13,7 +13,7 @@ This program uses the Go programming language .If you do not currently have Go i
 
 To clone the repository to your local machine, in command prompt enter 
 ```
-git clonehttps://github.com/kbarry91/Eliza-ChatBot.git
+git clone https://github.com/kbarry91/Eliza-ChatBot.git
 ```
 There is two ways to run this program
 1. **Build and Run** Navigate to the Eliza-Chatbot folder and enter the following to compile the code 
